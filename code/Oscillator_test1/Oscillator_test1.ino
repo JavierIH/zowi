@@ -20,9 +20,9 @@ Oscillator osc[4];
 
 //-- Global parameters for the oscillators
 //-- Change this parameters for generating different mini-waves
-const int A[4]= {8, 8, 8, 8};
+const int A[4]= {15, 15, 30, 30};
 const int O[4] = {-18, 7, -6, -11};
-const int T=1600;
+const int T=1000;
 const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
 
 void setup()
