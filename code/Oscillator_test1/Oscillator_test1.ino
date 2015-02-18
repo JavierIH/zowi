@@ -1,29 +1,54 @@
-//--------------------------------------------------------------
-//-- ArduSnake library: Locomotion of modular snake robots
-//-----------------------------------------------------------
-//-- Layer: Oscillator
-//------------------------------------------------------------
-//-- Example of use of the Oscillator layer
-//--
-//-- Example 5: A mini-wave is used for the locomotion of
-//-- a two modules worm robot
-//--------------------------------------------------------------
-//-- (c) Juan Gonzalez-Gomez (Obijuan), April-2012
-//-- GPL license
-//--------------------------------------------------------------
+
 #include <Servo.h>
 #include <Oscillator.h>
-//#include "skymega.h"
 
 //-- Declare two oscillators
 Oscillator osc[4];
 
 //-- Global parameters for the oscillators
-//-- Change this parameters for generating different mini-waves
-const int A[4]= {15, 15, 30, 30};
-const int O[4] = {-18, 7, -6, -11};
-const int T=1000;
-const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
+//-- Change this parameters for generating different gaits
+
+//-- Gait 1: Moving forward
+//const int A[4]= {15, 15, 30, 30};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
+
+//-- Gait: Moving forward slow
+//const int A[4]= {15, 15, 30, 30};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =3000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait: Moving forward faster - small steps
+//const int A[4]= {10, 10, 10, 10};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =500;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait: Moving backwards very slow
+//const int A[4]= {15, 15, 30, 30};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =3000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)}; 
+
+//-- Gait:Turning left
+//const int A[4]= {15, 15, 10, 30};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =3000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait Turning right
+//const int A[4]= {15, 15, 30, 10};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =3000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait: Right side moon walker :-)
+const int A[4]= {25, 25, 0, 0};
+const int O[4] = {-18 - 15, 7 + 15, -6, -11};
+const int T =1000;
+const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 + 120), DEG2RAD(90), DEG2RAD(90)}; 
 
 void setup()
 {
@@ -35,18 +60,14 @@ void setup()
   osc[2].attach(7);
   osc[3].attach(6);
 
-  //-- Configure the oscillators with the same parameters
+  //-- Set the oscillators parameters: amplitude, period, offset and phase
   for (int i=0; i<4; i++) {
     osc[i].SetO(O[i]);
     osc[i].SetA(A[i]);
     osc[i].SetT(T);
-
-  }
-
-  //-- Set the phase difference
-  for (int i=0; i<4; i++) 
     osc[i].SetPh(phase_diff[i]);
 
+  }
 }
 
 void loop()
