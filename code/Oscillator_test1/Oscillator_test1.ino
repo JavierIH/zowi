@@ -9,10 +9,10 @@ Oscillator osc[4];
 //-- Change this parameters for generating different gaits
 
 //-- Gait 1: Moving forward
-//const int A[4]= {15, 15, 30, 30};
-//const int O[4] = {-18, 7, -6, -11};
-//const int T =1000;
-//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
+const int A[4]= {15, 15, 30, 30};
+const int O[4] = {-18, 7, -6, -11};
+const int T =4000;
+const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)};
 
 //-- Gait: Moving forward slow
 //const int A[4]= {15, 15, 30, 30};
@@ -45,10 +45,46 @@ Oscillator osc[4];
 //const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
 
 //-- Gait: Right side moon walker :-)
-const int A[4]= {25, 25, 0, 0};
-const int O[4] = {-18 - 15, 7 + 15, -6, -11};
-const int T =1000;
-const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 + 120), DEG2RAD(90), DEG2RAD(90)}; 
+//const int A[4]= {25, 25, 0, 0};
+//const int O[4] = {-18 - 15, 7 + 15, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 + 120), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait: left side moon walker :-)
+//const int A[4]= {25, 25, 0, 0};
+//const int O[4] = {-18 - 15, 7 + 15, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 - 120), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait: Superposition: moonwalker + fordward
+//const int A[4]= {25, 25, 30, 30};
+//const int O[4] = {-18 - 15, 7 + 15, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 + 120), DEG2RAD(90), DEG2RAD(90)}; 
+
+//-- Gait: Swing
+//const int A[4]= {25, 25, 0, 0};
+//const int O[4] = {-18 - 15, 7 + 15, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
+
+//-- Gait: up-down
+//const int A[4]= {25, 25, 0, 0};
+//const int O[4] = {-18 - 15, 7 + 15, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(90)};
+
+//-- Gait: flapping
+//const int A[4]= {15, 15, 8, 8};
+//const int O[4] = {-18 - A[0] + 10, 7 + A[1] - 10, -6, -11};
+//const int T =1000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(-90)};
+
+//const int A[4]= {15, 15, 8, 8};
+//const int O[4] = {-18 - A[0] + 10, 7 + A[1] - 10, -6, -11};
+//const int T =500;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(-90)};
+
 
 void setup()
 {
