@@ -9,10 +9,10 @@ Oscillator osc[4];
 //-- Change this parameters for generating different gaits
 
 //-- Gait 1: Moving forward
-//const int A[4]= {15, 15, 30, 30};
-//const int O[4] = {-18, 7, -6, -11};
-//const int T =1000;
-//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
+const int A[4]= {15, 15, 30, 30};
+const int O[4] = {-18, 7, -6, -11};
+const int T =1000;
+const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
 
 //-- Gait: Moving forward slow
 //const int A[4]= {15, 15, 30, 30};
@@ -27,10 +27,10 @@ Oscillator osc[4];
 //const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
 
 //-- Gait: Moving backwards very slow
-const int A[4]= {15, 15, 30, 30};
-const int O[4] = {-18, 7, -6, -11};
-const int T =3000;
-const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)}; 
+//const int A[4]= {15, 15, 30, 30};
+//const int O[4] = {-18, 7, -6, -11};
+//const int T =3000;
+//const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)}; 
 
 //-- Gait:Turning left
 //const int A[4]= {15, 15, 10, 30};
@@ -80,6 +80,7 @@ const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)
 //const int T =1000;
 //const double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(-90)};
 
+//-- Test
 //const int A[4]= {15, 15, 8, 8};
 //const int O[4] = {-18 - A[0] + 10, 7 + A[1] - 10, -6, -11};
 //const int T =500;
