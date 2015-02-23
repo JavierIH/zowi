@@ -2,7 +2,7 @@ ISO-10303-21;
 HEADER;
 FILE_DESCRIPTION(('FreeCAD Model'),'2;1');
 FILE_NAME('/home/javierih/bq/zob/parts/step/body.step',
-  '2015-02-17T13:30:58',('FreeCAD'),('FreeCAD'),
+  '2015-02-23T11:12:09',('FreeCAD'),('FreeCAD'),
   'Open CASCADE STEP processor 6.7','FreeCAD','Unknown');
 FILE_SCHEMA(('AUTOMOTIVE_DESIGN_CC2 { 1 2 10303 214 -1 1 5 4 }'));
 ENDSEC;
