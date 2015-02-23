@@ -38,8 +38,7 @@ void setup()
 
 void loop()
 {
-  walk(1,2000);
-  delay(500);
+  walk(1,1000);
 }
 
 
@@ -69,7 +68,7 @@ void walk(int steps, int T){
 
 void run(int steps, int T){
     int A[4]= {10, 10, 10, 10};
-    int O[4] = {-18, 7, -6, -11};
+    int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -77,7 +76,7 @@ void run(int steps, int T){
 
 void backyard(int steps, int T){
     int A[4]= {15, 15, 30, 30};
-    int O[4] = {-18, 7, -6, -11};
+    int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -85,24 +84,24 @@ void backyard(int steps, int T){
 
 void backyardSlow(int steps, int T){
     int A[4]= {15, 15, 30, 30};
-    int O[4] = {-18, 7, -6, -11};
+    int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
 }
 
 
-void turnRight(int steps, int T){
-    int A[4]= {15, 15, 10, 30};
-    int O[4] = {-18, 7, -6, -11};
+void turnLeft(int steps, int T){
+    int A[4]= {20, 20, 10, 30};
+    int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
 }
 
-void turnLeft(int steps, int T){
-    int A[4]= {15, 15, 30, 10};
-    int O[4] = {-18, 7, -6, -11};
+void turnRight(int steps, int T){
+    int A[4]= {20, 20, 30, 10};
+    int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -110,7 +109,7 @@ void turnLeft(int steps, int T){
 
 void moonWalkRight(int steps, int T){
     int A[4]= {25, 25, 0, 0};
-    int O[4] = {-18 - 15, 7 + 15, -6, -11};
+    int O[4] = {TRIM_RR - 15, TRIM_RL + 15, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 + 120), DEG2RAD(90), DEG2RAD(90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -118,7 +117,7 @@ void moonWalkRight(int steps, int T){
 
 void moonWalkLeft(int steps, int T){
     int A[4]= {25, 25, 0, 0};
-    int O[4] = {-18 - 15, 7 + 15, -6, -11};
+    int O[4] = {TRIM_RR - 15, TRIM_RL + 15, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 - 120), DEG2RAD(90), DEG2RAD(90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -126,7 +125,7 @@ void moonWalkLeft(int steps, int T){
 
 void crusaito(int steps, int T){
     int A[4]= {25, 25, 30, 30};
-    int O[4] = {-18 - 15, 7 + 15, -6, -11};
+    int O[4] = {TRIM_RR - 15, TRIM_RL + 15, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180 + 120), DEG2RAD(90), DEG2RAD(90)}; 
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -134,7 +133,7 @@ void crusaito(int steps, int T){
 
 void swing(int steps, int T){
     int A[4]= {25, 25, 0, 0};
-    int O[4] = {-18 - 15, 7 + 15, -6, -11};
+    int O[4] = {TRIM_RR - 15, TRIM_RL + 15, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -142,7 +141,7 @@ void swing(int steps, int T){
 
 void upDown(int steps, int T){
     int A[4]= {25, 25, 0, 0};
-    int O[4] = {-18 - 15, 7 + 15, -6, -11};
+    int O[4] = {TRIM_RR - 15, TRIM_RL + 15, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(90)};
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -150,7 +149,7 @@ void upDown(int steps, int T){
 
 void flapping(int steps, int T){
     int A[4]= {15, 15, 8, 8};
-    int O[4] = {-18 - A[0] + 10, 7 + A[1] - 10, -6, -11};
+    int O[4] = {TRIM_RR - A[0] + 10, TRIM_RL + A[1] - 10, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(-90)};
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
@@ -158,7 +157,7 @@ void flapping(int steps, int T){
 
 void test(int steps, int T){
     int A[4]= {15, 15, 8, 8};
-    int O[4] = {-18 - A[0] + 10, 7 + A[1] - 10, -6, -11};
+    int O[4] = {TRIM_RR - A[0] + 10, TRIM_RL + A[1] - 10, TRIM_YR, TRIM_YL};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(90), DEG2RAD(-90)};
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
