@@ -17,6 +17,7 @@
 
 Oscillator servo[N_SERVOS];
 
+void goingUp(int tempo);
 void drunk (int tempo);
 void noGravity(int tempo);
 void kickLeft(int tempo);
@@ -36,6 +37,8 @@ void flapping(int steps, int T=1000);
 
 void setup()
 {
+  Serial.begin(19200);
+  
   servo[0].attach(PIN_RR);
   servo[1].attach(PIN_RL);
   servo[2].attach(PIN_YR);
@@ -45,6 +48,10 @@ void setup()
   servo[1].SetTrim(TRIM_RL);
   servo[2].SetTrim(TRIM_YR);
   servo[3].SetTrim(TRIM_YL);
+  
+  for(int i=0;i<4;i++) servo[i].SetPosition(90);
+
+  
 }
 
 // TEMPO: 121 BPM
@@ -53,6 +60,16 @@ double pause=0;
 
 void loop()
 {
+  if(Serial.available()){
+    char init = Serial.read();
+    if (init=='X'){
+      delay(4000); //3000 - 4500
+      dance();
+    }
+  }
+}
+
+void dance(){
   primera_parte();
   segunda_parte();
   moonWalkLeft(4,t*2);
@@ -79,24 +96,40 @@ void loop()
   drunk(t*4);
   kickLeft(t);
   kickRight(t);
-  drunk(t*2);*/
-  
-  //Javi del futuro sigue aqui
-  
-  noGravity(t*2);
-  //pie muerto
-  
-  //movida movida
-  
-  //Silencio
-  
-  //Gravity
-  
-  
+  drunk(t*8);
+  drunk(t*4);
+  drunk(t/2);
+  delay(t*4); 
 
+  drunk(t/2);
+
+  delay(t*4); 
+  walk(2,t*2);//Javi del futuro sigue aqui
+  backyard(2,t*2);//Javi del futuro sigue aqui
+  goingUp(t*2);
+  goingUp(t*1);
+  noGravity(t*2);
+  crusaito(1,t*2);
+  crusaito(1,t*8);
+  crusaito(1,t*2);
+  crusaito(1,t*8);/**/
+  crusaito(1,t*2);
+  crusaito(1,t*3);
+
+  delay(t);
+  primera_parte();
+    for (int i=0; i<32; i++){
+    flapping(1,t/2);
+    delay(t/2);
+  }
+  
+  for(int i=0;i<4;i++) servo[i].SetPosition(90);
 
 
 }
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////////////FUNCIONES DE CONTROL/////////////////////////////
@@ -154,6 +187,39 @@ void moveNServos(int time, int  newPosition[]){
 //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////PASOS DE BAILE////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
+
+void goingUp(int tempo){
+      pause=millis();
+      for(int i=0;i<4;i++) servo[i].SetPosition(90);
+      delay(tempo);
+      servo[0].SetPosition(80);
+      servo[1].SetPosition(100);
+      delay(tempo);
+      servo[0].SetPosition(70);
+      servo[1].SetPosition(110);
+      delay(tempo);
+      servo[0].SetPosition(60);
+      servo[1].SetPosition(120);
+      delay(tempo);
+      servo[0].SetPosition(50);
+      servo[1].SetPosition(130);
+      delay(tempo);
+      servo[0].SetPosition(40);
+      servo[1].SetPosition(140);
+      delay(tempo);
+      servo[0].SetPosition(30);
+      servo[1].SetPosition(150);
+      delay(tempo);
+      servo[0].SetPosition(20);
+      servo[1].SetPosition(160);
+      delay(tempo);
+      
+      while(millis()<pause+8*t);
+      
+
+
+
+}
 
 void primera_parte(){
   for(int x=0; x<3; x++){
@@ -237,6 +303,7 @@ void drunk (int tempo){
   while(millis()<(pause+tempo));
 
 }
+
 
 void noGravity(int tempo){
   for(int i=0;i<4;i++) servo[i].SetPosition(90);
