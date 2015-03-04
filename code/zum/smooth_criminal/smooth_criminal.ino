@@ -6,14 +6,14 @@
 #define INTERVALTIME 10.0 
 
 #define TRIM_RR -10
-#define TRIM_RL -15
-#define TRIM_YR -21
-#define TRIM_YL -2
+#define TRIM_RL -8
+#define TRIM_YR 8
+#define TRIM_YL 7
 
-#define PIN_RR 9
-#define PIN_RL 10 //8
-#define PIN_YR 7
-#define PIN_YL 6
+#define PIN_RR 4
+#define PIN_RL 5 //8
+#define PIN_YR 2
+#define PIN_YL 3
 
 Oscillator servo[N_SERVOS];
 
