@@ -1,4 +1,4 @@
-# ZOB (Zum On Bob)
+# ZOWI
 
 Original concept by [k120189](http://www.thingiverse.com/k120189/about) on [Thingiverse](http://www.thingiverse.com/thing:43708)
 
