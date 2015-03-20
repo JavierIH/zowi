@@ -2,7 +2,16 @@
 
 #define MAX_CH 2
 
-Servo servo[4];
+#define TRIM_RR -14
+#define TRIM_RL -9
+#define TRIM_YR -11
+#define TRIM_YL -9
+
+#define PIN_RR 4
+#define PIN_RL 5 //8
+#define PIN_YR 2
+#define PIN_YL 3
+
 int channel[MAX_CH];
 
 Servo sRR; //roll right
@@ -10,26 +19,20 @@ Servo sRL; //roll left
 Servo sYR; //yaw right                       
 Servo sYL; //yaw left
 
-int offset_RR=-18; //Zero point calibration
-int offset_RL=7;
-int offset_YR=-6;
-int offset_YL=-11;
-
 
 void setup() {
   Serial.begin(19200);
-  sRR.attach(9);
-  sRL.attach(8);
-  sYR.attach(7);
-  sYL.attach(6);
+  sRR.attach(PIN_RR);
+  sRL.attach(PIN_RL);
+  sYR.attach(PIN_YR);
+  sYL.attach(PIN_YL);
   channel[0]=90;
   channel[1]=90;  
   
-  sRR.write(90+offset_RR);
-  sRL.write(90+offset_RL);
-  sYR.write(90+offset_YR);
-  sYL.write(90+offset_YL);
-  
+  sRR.write(90+TRIM_RR);
+  sRL.write(90+TRIM_RL);
+  sYR.write(90+TRIM_YR);
+  sYL.write(90+TRIM_YL);
 }
 
 void loop() {
@@ -37,8 +40,10 @@ void loop() {
     while(Serial.read()!=0);
     for (int i=0;i<MAX_CH;i++) channel[i]=((int)Serial.read());
     
-    sRR.write(channel[0]+45+offset_RR);  
-    sRL.write(channel[0]+45+offset_RL);    
+    sRR.write(channel[1]+45+TRIM_RR);  
+    sRL.write(channel[1]+45+TRIM_RL); 
+    sYR.write(channel[0]+45+TRIM_YR);  
+    sYL.write(channel[0]+45+TRIM_YL);    
   }
 }
 
