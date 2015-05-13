@@ -3,15 +3,15 @@
 
 #define N_OSCILLATORS 4
 
-#define TRIM_RR -10
-#define TRIM_RL -15
-#define TRIM_YR -21
+#define TRIM_RR -4
+#define TRIM_RL -4
+#define TRIM_YR -12
 #define TRIM_YL -2
 
 #define PIN_RR 9
-#define PIN_RL 10 //8
-#define PIN_YR 7
-#define PIN_YL 6
+#define PIN_RL 5 //8
+#define PIN_YR 2
+#define PIN_YL 3
 
 Oscillator osc[N_OSCILLATORS];
 
@@ -34,12 +34,51 @@ void setup()
   osc[1].attach(PIN_RL);
   osc[2].attach(PIN_YR);
   osc[3].attach(PIN_YL);
+  
+  osc[0].SetTrim(TRIM_RR);
+  osc[1].SetTrim(TRIM_RL);
+  osc[2].SetTrim(TRIM_YR);
+  osc[3].SetTrim(TRIM_YL);
 }
 
 void loop()
 {
-  walk(1,2000);
-  delay(500);
+   int A[4]= {35, 10, 16, 16};
+   int O[4] = {-10, 10, 0, 0};
+   double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(180), DEG2RAD(00)};
+   int T=3000;
+    
+   while(1) oscillate(A,O, T, phase_diff);
+   /*int a=10;
+   int t=200;
+   
+  osc[0].SetPosition(30);
+  osc[1].SetPosition(150);
+  osc[2].SetPosition(90-a);
+  osc[3].SetPosition(90+a);
+  
+  delay(t);
+  
+  osc[0].SetPosition(30);
+  osc[1].SetPosition(150);
+  osc[2].SetPosition(90+a);
+  osc[3].SetPosition(90-a);
+  
+  delay(t);
+ 
+  osc[0].SetPosition(50);
+  osc[1].SetPosition(130);
+  osc[2].SetPosition(90+a);
+  osc[3].SetPosition(90-a);
+  
+  delay(t); 
+  
+  osc[0].SetPosition(50);
+  osc[1].SetPosition(130);
+  osc[2].SetPosition(90-a);
+  osc[3].SetPosition(90+a);
+  
+  delay(t);*/
 }
 
 
@@ -52,6 +91,27 @@ void oscillate(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int T, double phase_d
   }
   double ref=millis();
    for (double x=ref; x<T+ref; x=millis()){
+     for (int i=0; i<4; i++){
+        osc[i].refresh();
+     }
+  }
+}
+
+void oscillate_mod(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int Ta , int Tb, double phase_diff[N_OSCILLATORS]){
+  for (int i=0; i<2; i++) {
+    osc[i].SetO(O[i]);
+    osc[i].SetA(A[i]);
+    osc[i].SetT(Ta);
+    osc[i].SetPh(phase_diff[i]);
+  }
+  for (int i=2; i<4; i++) {
+    osc[i].SetO(O[i]);
+    osc[i].SetA(A[i]);
+    osc[i].SetT(Tb);
+    osc[i].SetPh(phase_diff[i]);
+  }
+  double ref=millis();
+   for (double x=ref; x<Tb+ref; x=millis()){
      for (int i=0; i<4; i++){
         osc[i].refresh();
      }

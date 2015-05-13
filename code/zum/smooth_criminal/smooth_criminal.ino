@@ -6,10 +6,10 @@
 
 #define EEPROM_TRIM 1 //Activar para coger los datos de calibracin desde la memoria interna
 
-#define TRIM_RR 0
-#define TRIM_RL 0
-#define TRIM_YR 0
-#define TRIM_YL 0
+#define TRIM_RR -7
+#define TRIM_RL -12
+#define TRIM_YR -20
+#define TRIM_YL -5
 
 #define PIN_RR 3
 #define PIN_RL 2 //8
@@ -86,9 +86,13 @@ void loop()
    // if (init=='X'){
    //   delay(4000); //3000 - 4500
    
-      dance();
+dance();
+
+
+//for(int i=0;i<4;i++) servo[i].SetPosition(90);
+
       
-          //for(int i=0;i<4;i++) servo[i].SetPosition(90);
+          for(int i=0;i<4;i++) servo[i].SetPosition(90);
    // }
  // }
 }
