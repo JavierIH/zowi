@@ -34,8 +34,8 @@ void setup()
 *  - (int) pin del servo inferior izquierdo                                           *
 *  - (int) pin del servo inferior derecho                                             *
 *  - (boolean) booleano que indica si quieren cargarse los valores de calibracion     *
-*    de la memoria EEPROM (1) o no (0). Este valor puede omitirse, por defecto        *
-*    sera 0                                                                           *
+*    de la memoria EEPROM (1, true) o no (0, false). Este valor puede omitirse, por   *
+*    defecto sera 0                                                                   *
 *                                                                                     *
 **************************************************************************************/
 
@@ -43,7 +43,7 @@ void setup()
 
 /**************************************************************************************
 *                                                                                     *  
-* Como hemos puesto el booleano a 0, necesitaremos darle unos valores de              *
+* Como hemos puesto el booleano a 0 (false), necesitaremos darle unos valores de      *
 * calibracion manualmente. Estos valores, en grados, son offsets a la orientacion     *
 * el servo. Estos valores deberan variarse poco a poco, hasta que el robot quede      *
 * totalmente recto. El orden de los valores respecto a los servos sera nuevamente     *
@@ -55,12 +55,13 @@ void setup()
 
 /**************************************************************************************
 *                                                                                     *  
-// Una vez que se han obtenido empiricamente valores correctos de calibracion, se     *
-// puede utilizar la funcion saveTrimsOnEEPROM para guardar los valores en la         *
-// memoria de la placa, as la proxima vez que se programe a Zowi, se podra utilizar   *
-// funcion init con un 0 al final, para cargar los valores guardados de la EEPROM.    *
-// Sin embargo es MUY IMPORTANTE solo guardar los valores una vez. Despues de subir   *
-// el programa a la placa, debe eliminarse la linea para evitar deteriorar la EEPROM  *
+* Una vez que se han obtenido empiricamente valores correctos de calibracion, se      *
+* puede utilizar la funcion saveTrimsOnEEPROM para guardar los valores en la          *
+* memoria de la placa, asi la proxima vez que se programe a Zowi, se podra utilizar   *
+* funcion init con un 1 al final, para cargar los valores guardados de la EEPROM.     *
+* Sin embargo es MUY IMPORTANTE solo guardar los valores una vez. En posteriores      *
+* cargas del programa a la placa, debe eliminarse la linea para evitar deteriorar la  *
+* EEPROM                                                                              *
 *                                                                                     *
 **************************************************************************************/
 
@@ -72,7 +73,7 @@ void setup()
 
 int posiciones[] = {90, 90, 90, 90};
 
-void loop()
+void loop() 
 {
 
 /**************************************************************************************
