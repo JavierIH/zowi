@@ -129,8 +129,8 @@ void micro() {
 void setup()
 {
   int t = 495;
-  zowi.init(4, 5, 2, 3, 1);
-  //zowi.setTrims(-20,-6,-8,-12);
+  zowi.init(2, 3, 4, 5, 1);
+  //zowi.setTrims(-17,-6,5,0);
   //zowi.saveTrimsOnEEPROM();
 
   pinMode(echo, INPUT);
@@ -148,7 +148,10 @@ int posiciones2[] = {80, 80, 80, 80};
 long ex_t=0;
 void loop()
 {
-  zowi.moveServos(0, posiciones);
+  
+  zowi.walk(0.5,800);
+  //zowi.moveServos(0,posiciones); 
+ /* zowi.moveServos(0, posiciones);
 
 
   tone(6, 400);
