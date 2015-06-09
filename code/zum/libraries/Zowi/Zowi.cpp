@@ -70,7 +70,7 @@ void Zowi::walk(float steps, int T){
 
     int cycles=steps;    
 
-    for(int i=cycles;i<cycles;i++) oscillateServos(A,O, T, phase_diff);
+    if (steps > 1) for(int i=0;i<steps;i++) oscillateServos(A,O, T, phase_diff);
     oscillateServos(A,O, T, phase_diff,(float)steps-cycles);
 	
     
@@ -79,7 +79,7 @@ void Zowi::walk(float steps, int T){
 void Zowi::backward(float steps, int T){
     int A[4]= {15, 15, 30, 30};
     int O[4] = {0, 0, 0, 0};
-    double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(-90), DEG2RAD(-90)}; 
+    double phase_diff[4] = {DEG2RAD(180), DEG2RAD(180), DEG2RAD(270), DEG2RAD(270)}; 
     
     for(int i=0;i<steps;i++) oscillateServos(A,O, T, phase_diff);
 }
