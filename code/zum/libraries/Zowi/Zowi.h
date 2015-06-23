@@ -19,7 +19,7 @@ class Zowi
     void moveServos(int time, int  servo_target[]);
     void oscillateServos(int A[4], int O[4], int T, double phase_diff[4], float cycle);
     
-    void walk(float steps, int T);
+    void walk(float steps=4, int T=1800);
     void turnLeft(float steps, int T);
     void turnRight(float steps, int T);
     void backward(float steps, int T);
