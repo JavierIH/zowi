@@ -1,0 +1,3 @@
+[submodule "code/zum/libraries/ArduSnake"]
+	path = code/zum/libraries/ArduSnake
+	url = https://github.com/Obijuan/ArduSnake.git
