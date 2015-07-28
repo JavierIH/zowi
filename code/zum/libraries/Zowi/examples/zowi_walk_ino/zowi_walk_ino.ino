@@ -1,11 +1,11 @@
 //----------------------------------------------------------------
-//-- Zowi hello world
+//-- Zowi: Testing its locomotion gaits
 //-- (c) BQ. Released under a GPL licencse
 //-- July 2015
 //-- Authors:  Javier Isabel:  javier.isabel@bq.com
 //--           Juan Gonzalez (obijuan): juan.gonzalez@bq.com
 //-----------------------------------------------------------------
-//-- It just makes zowi walk forward and then stop
+//-- Try and combine the different locomotion gaits!
 //-----------------------------------------------------------------
 
 
@@ -67,34 +67,48 @@ void setup()
 void loop()
 {
   //-- Zowi at rest position
-  //z.home();
-  //delay(500);
+  z.home();
+  delay(500);
   
   //-- Make zowi walk forward and backward!
-  //-- Parameters: Number of steps,  Period in ms,
+  //-- Parameters: Number of steps,  Period in ms, direction: FORWARD
     
+  z.walk(4, 2000, FORWARD);  //-- Move forward. Slow
+  z.walk(4, 1000, FORWARD);  //-- Move forward. Faster
+  
+  z.home();
+  delay(500);
+  
+  //-- Make zowi walk backward
+  z.walk(4, 1000, BACKWARD);  //-- Move backward. Fast
+  z.walk(4, 2000, BACKWARD); //-- Move backward slot
     
   //-- Make zowi turn left and right
   //z.turn(3, 2000, RIGHT);
   //z.turn(3, 2000, LEFT);
   
-  
+  //-- Make zowi move up and down
   //z.updown(6, 500, SMALL);
   //z.updown(6, 500, MEDIUM);
   //z.updown(6, 500, BIG);
   //z.updown(2, 4000, BIG);
   
+  //-- Zowi performing the moonwalker!!
   //z.moonwalker(3, 2000, 30, LEFT);
   //z.moonwalker(3, 2000, 30, RIGHT);
   
+  //-- Zowi moving side to side
   //z.swing(6, 600, 10);
   //z.swing(4, 2000, 40);
   
+  
+  //-- Zowi doing the "crusaito": A mixture between walk and moonwalker
   //z.crusaito(6, 2000, 40, LEFT);
   //z.crusaito(6, 2000, 40, RIGHT);
   
-  z.flapping(10, 600, 10, FORWARD);
-  z.flapping(10, 600, 10, BACKWARD);
+  //-- Zowi moving backward and forward in a different way
+  //z.flapping(10, 600, 10, FORWARD);
+  //z.flapping(10, 600, 10, BACKWARD);
   
   z.home();
   
