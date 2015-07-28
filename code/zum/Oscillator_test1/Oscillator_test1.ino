@@ -3,15 +3,15 @@
 
 #define N_OSCILLATORS 4
 
-#define TRIM_RR -4
-#define TRIM_RL -4
-#define TRIM_YR -12
-#define TRIM_YL -2
+#define TRIM_RR -5
+#define TRIM_RL 0
+#define TRIM_YR 0
+#define TRIM_YL -14
 
-#define PIN_RR 9
-#define PIN_RL 5 //8
-#define PIN_YR 2
-#define PIN_YL 3
+#define PIN_RR 5
+#define PIN_RL 4
+#define PIN_YR 3
+#define PIN_YL 2
 
 Oscillator osc[N_OSCILLATORS];
 
@@ -43,12 +43,16 @@ void setup()
 
 void loop()
 {
-   int A[4]= {35, 10, 16, 16};
-   int O[4] = {-10, 10, 0, 0};
+   int A[4]= {10, 5, 0, 0};
+   int O[4] = {A[0]/2+4, 0, 0, 0};
    double phase_diff[4] = {DEG2RAD(0), DEG2RAD(180), DEG2RAD(180), DEG2RAD(00)};
-   int T=3000;
+   int T=1000;
     
-   while(1) oscillate(A,O, T, phase_diff);
+   //while(1) oscillate(A,O, T, phase_diff);
+     walk(1,2000);
+     delay(500);;
+     walk(4,1000);
+     while(1);
    /*int a=10;
    int t=200;
    
@@ -120,8 +124,9 @@ void oscillate_mod(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int Ta , int Tb, 
 
 
 void walk(int steps, int T){
-    int A[4]= {15, 15, 30, 30};
-    int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
+    int A[4]= {20, 20, 30, 30};
+    //int O[4] = {TRIM_RR, TRIM_RL, TRIM_YR, TRIM_YL};
+    int O[4] = {-6,0,0,0};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
