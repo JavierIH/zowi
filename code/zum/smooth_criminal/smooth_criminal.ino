@@ -4,17 +4,20 @@
 
 #define N_SERVOS 4
 
-#define EEPROM_TRIM 1 //Activar para coger los datos de calibracin desde la memoria interna
+//-- Have a look at the file zowi_walk_ino.ino for the documentation on how
+//-- the servos are attached
+
+#define EEPROM_TRIM 0 //Activar para coger los datos de calibracin desde la memoria interna
 
 #define TRIM_RR -7
-#define TRIM_RL -12
-#define TRIM_YR -20
-#define TRIM_YL -5
+#define TRIM_RL -2
+#define TRIM_YR  0
+#define TRIM_YL -14
 
-#define PIN_RR 3
-#define PIN_RL 2 //8
-#define PIN_YR 5
-#define PIN_YL 4
+#define PIN_RR 5
+#define PIN_RL 4
+#define PIN_YR 3
+#define PIN_YL 2
 
 #define INTERVALTIME 10.0 
 
