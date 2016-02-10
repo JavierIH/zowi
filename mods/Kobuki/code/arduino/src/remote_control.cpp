@@ -1,18 +1,21 @@
+//sv
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <Oscillator.h>
 
 #define N_OSCILLATORS 9
 
-#define TRIM_RR -11
+#define TRIM_RR -2
 #define TRIM_RL -15
-#define TRIM_YR -13
+#define TRIM_YR -9
 #define TRIM_YL -6
-#define TRIM_SR 15
-#define TRIM_SL 0
-#define TRIM_AR 6
-#define TRIM_AL 0
-#define TRIM_H 0
+#define TRIM_SR 25
+#define TRIM_SL -15
+#define TRIM_AR 14
+#define TRIM_AL 45
+#define TRIM_H -12
+
 
 #define PIN_RR 4
 #define PIN_RL 5
@@ -23,8 +26,6 @@
 #define PIN_AR 3
 #define PIN_AL 9
 #define PIN_H 12
-#define PIN_BUZZ 11
-
 
 Oscillator osc[N_OSCILLATORS];
 
@@ -40,7 +41,8 @@ void home();
 void attack();
 void punchL();
 void punchR();
-void ninuninu();
+void nono(int T=1000);
+void queno(int T=300);
 
 void setup()
 {
@@ -65,7 +67,8 @@ void setup()
     osc[7].SetTrim(TRIM_AL);/**/
     osc[8].SetTrim(TRIM_H);/**/
 
-    ninuninu();
+    home();
+    nono();
 }
 
 char input;
@@ -76,62 +79,46 @@ void loop()
         while (Serial.available()) input = Serial.read();
         switch(input){
             case 'A':
-                walk(1, 800);
+                walk(1, 1200);
                 break;
 
             case 'B':
-                turnR(1, 800);
+                turnR();
                 break;
 
             case 'C':
-                backward(1, 800);
+                backward();
                 break;
 
             case 'D':
-                turnL(1, 800);
+                turnL();
                 break;
 
             case 'E':
-                tone(11, 800, 250);
-                delay(50);
-                tone(11, 1600, 250);
-
                 upDown();
                 break;
 
             case 'F':
-                tone(11, 800, 250);
-                delay(50);
-                tone(11, 1600, 250);
-
                 punchR();
                 delay(300);
                 break;
 
             case 'G':
-                tone(11, 800, 250);
-                delay(50);
-                tone(11, 1600, 250);
-
                 attack();
                 delay(300);
                 break;
 
             case 'H':
-                tone(11, 800, 250);
-                delay(50);
-                tone(11, 1600, 250);
-
                 punchL();
                 delay(300);
                 break;
 
             case 'I':
-                ninuninu();
+                queno();
                 break;
 
             case 'J':
-                moonWalkR();
+                nono(1000);
                 break;
             default:
                 home();
@@ -180,7 +167,7 @@ void oscillate_mod(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int Ta , int Tb, 
 }
 
 void walk(int steps, int T){
-    int A[8]= {15, 15, 25, 25, 20, 20, 15, 15};
+    int A[8]= {18, 18, 20, 20, 20, 20, 15, 15};
     int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
     double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
                             DEG2RAD(270), DEG2RAD(270), DEG2RAD(0), DEG2RAD(0)};
@@ -236,7 +223,7 @@ void moonWalkL(int steps, int T){
 
 void upDown(int steps, int T){
     int A[8]= {25, 25, 0, 0, 0, 0, 35, 35};
-    int O[8] = {-25, 25, 0, 0, -60, 60, 0, 0,};
+    int O[8] = {-25, 25, 0, 0, -60, 60, 0, 0};
     double phase_diff[8] = {DEG2RAD(0), DEG2RAD(180), 0, 0,
                             0, 0, DEG2RAD(0), DEG2RAD(180)};
 
@@ -288,19 +275,48 @@ void punchR(){
     osc[7].SetPosition(90);
 }
 
-void ninuninu(){
+void nono(int T){
     home();
-    int T = 1000;
 
-    tone(11, 2000, 250);
+    int steps = 4;
+    osc[8].SetO(0);
+    osc[8].SetA(30);
+    osc[8].SetT(T);
+    osc[8].SetPh(0);
 
-    for (int i = 0; i<10; i++){
-        osc[8].SetPosition(130);
-        tone(11, 600+i*40, 250);
-        delay(100);
-        osc[8].SetPosition(90);
-        tone(11, (600+i*40)*2, 250);
-        delay(100);
+    double ref = millis();
+    for (double x=ref; x<steps*T+ref; x=millis()){
+        osc[8].refresh();
     }
+    osc[8].SetPosition(90);
+}
 
+void queno(int T){
+    home();
+
+    int steps = 4;
+    osc[8].SetO(0);
+    osc[8].SetA(30);
+    osc[8].SetT(T*2);
+    osc[8].SetPh(0);
+
+    osc[6].SetO(0);
+    osc[6].SetA(30);
+    osc[6].SetT(T);
+    osc[6].SetPh(0);
+
+    osc[7].SetO(0);
+    osc[7].SetA(30);
+    osc[7].SetT(T);
+    osc[7].SetPh(DEG2RAD(180));
+
+    double ref = millis();
+    for (double x=ref; x<steps*T+ref; x=millis()){
+        osc[6].refresh();
+        osc[7].refresh();
+        osc[8].refresh();
+    }
+    osc[6].SetPosition(50);
+    osc[7].SetPosition(130);
+    osc[8].SetPosition(90);
 }
