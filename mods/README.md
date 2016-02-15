@@ -1,11 +1,11 @@
 #Zowi mods
 
+| JIM | Scopum | Micro Raider |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="JIM/images/jim.jpg" height="250" align="center"> | <img src="Scopum/images/scopum.png" height="250" align="center"> | <img src="MicroRaider/doc/images/microraider.jpg" height="250" align="center"> |
+| By [Sonia Verdú](http://www.soniaverdu.es/) | By [Macarena González](https://github.com/MacarenaGB)| By  [Javier Isabel](https://github.com/JavierIH)|
 
-
-| Robot | Name | Author |
-| ------------- | ------------- | ------------- |
-| <img src="JIM/images/JIM_1.jpg" width="300" align="center">  | JIM | [Sonia Verdú](http://www.soniaverdu.es/) |
-| <img src="Scopum/images/Scopum.PNG" height="300" align="center"> | Scopum | [Macarena González](https://github.com/MacarenaGB) |
-|  | Micro Raider| [Javier Isabel](https://github.com/JavierIH) |
-|  | Forge | [David Sánchez](https://github.com/davidsanfal)  |
-|  | Zowiquilator | [Alberto Arribas](http://www.albertoarribasart.com/) |
+| Forge | Zowiquilator | Kobuki |
+| ------------- | ------------- | ------------- | ------------- |
+|<img src="Forge/images/forge.jpg" height="250" align="center"> | <img src="Zowiquilator/images/zowiquilator.jpg" height="250" align="center"> | <img src="Kobuki/images/kobuki.jpg" height="250" align="center"> |
+| By [David Sánchez](https://github.com/davidsanfal) | by [Alberto Arribas](http://www.albertoarribasart.com/)  | By [Sonia Verdú](http://www.soniaverdu.es/) |
