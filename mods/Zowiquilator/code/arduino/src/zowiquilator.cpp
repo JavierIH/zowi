@@ -54,8 +54,8 @@ void setup()
     osc[4].attach(PIN_SHOULDERRIGHT);
     osc[5].attach(PIN_SHOULDERLEFT);
     osc[6].attach(PIN_ARMRIGHT);
-    osc[7].attach(PIN_ALEFT);/**/
-    osc[8].attach(PIN_HEAD);/**/
+    osc[7].attach(PIN_ARMLEFT);
+    osc[8].attach(PIN_HEAD);
 
     osc[0].SetTrim(TRIM_ROLLRIGHT);
     osc[1].SetTrim(TRIM_ROLLLEFT);
