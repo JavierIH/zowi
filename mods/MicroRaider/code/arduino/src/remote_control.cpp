@@ -41,6 +41,7 @@ void attack();
 void punchL();
 void punchR();
 void ninuninu();
+void mareo();
 
 void setup()
 {
@@ -76,7 +77,7 @@ void loop()
         while (Serial.available()) input = Serial.read();
         switch(input){
             case 'A':
-                walk(1, 800);
+                walk(1, 750);
                 break;
 
             case 'B':
@@ -131,7 +132,7 @@ void loop()
                 break;
 
             case 'J':
-                moonWalkR();
+                mareo();
                 break;
             default:
                 home();
@@ -180,7 +181,7 @@ void oscillate_mod(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int Ta , int Tb, 
 }
 
 void walk(int steps, int T){
-    int A[8]= {15, 15, 25, 25, 20, 20, 15, 15};
+    int A[8]= {15, 15, 22, 22, 20, 20, 15, 15};
     int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
     double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
                             DEG2RAD(270), DEG2RAD(270), DEG2RAD(0), DEG2RAD(0)};
@@ -294,13 +295,37 @@ void ninuninu(){
 
     tone(11, 2000, 250);
 
-    for (int i = 0; i<10; i++){
+    for (int i = 0; i<10; i+=2){
         osc[8].SetPosition(130);
-        tone(11, 600+i*40, 250);
+        tone(11, 550+i*40, 250);
         delay(100);
+        osc[0].SetPosition(90-i*5);
+        osc[1].SetPosition(90+i*5);
         osc[8].SetPosition(90);
-        tone(11, (600+i*40)*2, 250);
+        tone(11, (550+i*40)*2, 250);
         delay(100);
     }
+}
 
+void mareo(){
+    home();
+    double time_ref = millis();
+    osc[8].SetPosition(130);
+    for (int i=0; i<2; i++){
+        osc[4].SetPosition(30);
+        osc[5].SetPosition(30);
+        time_ref=millis();
+        while(millis()<time_ref+200){
+            tone(11, random(500, 1200), 100);
+            delay(60);
+        }
+        osc[4].SetPosition(150);
+        osc[5].SetPosition(150);
+        time_ref=millis();
+        while(millis()<time_ref+200){
+            tone(11, random(500, 1200), 100);
+            delay(60);
+        }
+
+    }
 }
