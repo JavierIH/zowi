@@ -4,26 +4,26 @@
 
 #define N_OSCILLATORS 9
 
-#define TRIM_RR -6 //-11
-#define TRIM_RL -10//-17
-#define TRIM_YR -17//-13
-#define TRIM_YL -10//-6
-#define TRIM_SR 43//15
-#define TRIM_SL -34//0
-#define TRIM_AR 7//6
-#define TRIM_AL -9//0
-#define TRIM_H 10//0
+#define TRIM_ROLLRIGHT -6 //-11
+#define TRIM_ROLLLEFT -10//-17
+#define TRIM_YAWRIGHT -17//-13
+#define TRIM_YAWLEFT -10//-6
+#define TRIM_SHOULDERRIGHT 43//15
+#define TRIM_SHOULDERLEFT -34//0
+#define TRIM_ARMRIGHT 7//6
+#define TRIM_ARMLEFT -9//0
+#define TRIM_HEAD 10//0
 
 
-#define PIN_RR 4
-#define PIN_RL 5
-#define PIN_YR 6
-#define PIN_YL 7
-#define PIN_SR 2
-#define PIN_SL 8
-#define PIN_AR 3
-#define PIN_AL 9
-#define PIN_H 12
+#define PIN_ROLLRIGHT 4
+#define PIN_ROLLLEFT 5
+#define PIN_YAWRIGHT 6
+#define PIN_YAWLEFT 7
+#define PIN_SHOULDERRIGHT 2
+#define PIN_SHOULDERLEFT 8
+#define PIN_ARMRIGHT 3
+#define PIN_ARMLEFT 9
+#define PIN_HEAD 12
 
 Oscillator osc[N_OSCILLATORS];
 
@@ -47,25 +47,25 @@ void setup()
 
     pinMode(13, OUTPUT);
 
-    osc[0].attach(PIN_RR);
-    osc[1].attach(PIN_RL);
-    osc[2].attach(PIN_YR);
-    osc[3].attach(PIN_YL);
-    osc[4].attach(PIN_SR);
-    osc[5].attach(PIN_SL);
-    osc[6].attach(PIN_AR);
-    osc[7].attach(PIN_AL);/**/
-    osc[8].attach(PIN_H);/**/
+    osc[0].attach(PIN_ROLLRIGHT);
+    osc[1].attach(PIN_ROLLLEFT);
+    osc[2].attach(PIN_YAWRIGHT);
+    osc[3].attach(PIN_YAWLEFT);
+    osc[4].attach(PIN_SHOULDERRIGHT);
+    osc[5].attach(PIN_SHOULDERLEFT);
+    osc[6].attach(PIN_ARMRIGHT);
+    osc[7].attach(PIN_ARMLEFT);
+    osc[8].attach(PIN_HEAD);
 
-    osc[0].SetTrim(TRIM_RR);
-    osc[1].SetTrim(TRIM_RL);
-    osc[2].SetTrim(TRIM_YR);
-    osc[3].SetTrim(TRIM_YL);
-    osc[4].SetTrim(TRIM_SR);
-    osc[5].SetTrim(TRIM_SL);
-    osc[6].SetTrim(TRIM_AR);
-    osc[7].SetTrim(TRIM_AL);/**/
-    osc[8].SetTrim(TRIM_H);/**/
+    osc[0].SetTrim(TRIM_ROLLRIGHT);
+    osc[1].SetTrim(TRIM_ROLLLEFT);
+    osc[2].SetTrim(TRIM_YAWRIGHT);
+    osc[3].SetTrim(TRIM_YAWLEFT);
+    osc[4].SetTrim(TRIM_SHOULDERRIGHT);
+    osc[5].SetTrim(TRIM_SHOULDERLEFT);
+    osc[6].SetTrim(TRIM_ARMRIGHT);
+    osc[7].SetTrim(TRIM_ARMLEFT);/**/
+    osc[8].SetTrim(TRIM_HEAD);/**/
 
     digitalWrite(13, HIGH);
     home();
