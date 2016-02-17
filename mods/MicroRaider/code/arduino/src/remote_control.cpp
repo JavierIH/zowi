@@ -2,17 +2,17 @@
 #include <Servo.h>
 #include <Oscillator.h>
 
-#define N_OSCILLATORS 9
+#define N_OSC 9
 
-#define TRIM_RR -11
-#define TRIM_RL -15
-#define TRIM_YR -13
-#define TRIM_YL -6
-#define TRIM_SR 15
-#define TRIM_SL 0
-#define TRIM_AR 6
-#define TRIM_AL 0
-#define TRIM_H 0
+#define TRIM_RR -11     //Leg Roll Right
+#define TRIM_RL -15     //Leg Roll Left
+#define TRIM_YR -13     //Leg Yaw Right
+#define TRIM_YL -6      //Leg Yaw Left
+#define TRIM_SR 15      //Shoulder Right
+#define TRIM_SL 0       //Shoulder Left
+#define TRIM_AR 6       //Arm Right
+#define TRIM_AL 0       //Arm Left
+#define TRIM_H 0        //Head
 
 #define PIN_RR 4
 #define PIN_RL 5
@@ -25,8 +25,7 @@
 #define PIN_H 12
 #define PIN_BUZZ 11
 
-
-Oscillator osc[N_OSCILLATORS];
+Oscillator osc[N_OSC];
 
 void run(int steps=1, int T=500);
 void walk(int steps=1, int T=1000);
@@ -43,8 +42,8 @@ void punchR();
 void ninuninu();
 void mareo();
 
-void setup()
-{
+void setup(){
+
     Serial.begin(19200);
     osc[0].attach(PIN_RR);
     osc[1].attach(PIN_RL);
@@ -53,8 +52,8 @@ void setup()
     osc[4].attach(PIN_SR);
     osc[5].attach(PIN_SL);
     osc[6].attach(PIN_AR);
-    osc[7].attach(PIN_AL);/**/
-    osc[8].attach(PIN_H);/**/
+    osc[7].attach(PIN_AL);
+    osc[8].attach(PIN_H);
 
     osc[0].SetTrim(TRIM_RR);
     osc[1].SetTrim(TRIM_RL);
@@ -63,10 +62,12 @@ void setup()
     osc[4].SetTrim(TRIM_SR);
     osc[5].SetTrim(TRIM_SL);
     osc[6].SetTrim(TRIM_AR);
-    osc[7].SetTrim(TRIM_AL);/**/
-    osc[8].SetTrim(TRIM_H);/**/
+    osc[7].SetTrim(TRIM_AL);
+    osc[8].SetTrim(TRIM_H);
 
-    ninuninu();
+    //ninuninu();
+    walk(6, 3000);
+
 }
 
 char input;
@@ -75,6 +76,7 @@ void loop()
 {
     if(Serial.available()){
         while (Serial.available()) input = Serial.read();
+        Serial.println(input);
         switch(input){
             case 'A':
                 walk(1, 750);
@@ -106,7 +108,9 @@ void loop()
                 tone(11, 1600, 250);
 
                 punchR();
-                delay(300);
+                delay(250);
+                home();
+                delay(100);
                 break;
 
             case 'G':
@@ -115,7 +119,9 @@ void loop()
                 tone(11, 1600, 250);
 
                 attack();
-                delay(300);
+                delay(250);
+                home();
+                delay(100);
                 break;
 
             case 'H':
@@ -124,7 +130,9 @@ void loop()
                 tone(11, 1600, 250);
 
                 punchL();
-                delay(300);
+                delay(250);
+                home();
+                delay(100);
                 break;
 
             case 'I':
@@ -134,63 +142,33 @@ void loop()
             case 'J':
                 mareo();
                 break;
+
             default:
                 home();
                 break;
         }
-        Serial.flush();
     }
     else home();
 }
 
 
-void oscillate(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int T, double phase_diff[N_OSCILLATORS]){
-  for (int i=0; i<8; i++) {
-    osc[i].SetO(O[i]);
-    osc[i].SetA(A[i]);
-    osc[i].SetT(T);
-    osc[i].SetPh(phase_diff[i]);
-  }
-  double ref=millis();
-   for (double x=ref; x<T+ref; x=millis()){
-     for (int i=0; i<8; i++){
-        osc[i].refresh();
-     }
-  }
-}
-
-void oscillate_mod(int A[N_OSCILLATORS], int O[N_OSCILLATORS], int Ta , int Tb, double phase_diff[N_OSCILLATORS]){
-  for (int i=0; i<2; i++) {
-    osc[i].SetO(O[i]);
-    osc[i].SetA(A[i]);
-    osc[i].SetT(Ta);
-    osc[i].SetPh(phase_diff[i]);
-  }
-  for (int i=2; i<4; i++) {
-    osc[i].SetO(O[i]);
-    osc[i].SetA(A[i]);
-    osc[i].SetT(Tb);
-    osc[i].SetPh(phase_diff[i]);
-  }
-  double ref=millis();
-   for (double x=ref; x<Tb+ref; x=millis()){
-     for (int i=0; i<4; i++){
-        osc[i].refresh();
-     }
-  }
+void oscillate(int A[N_OSC], int O[N_OSC], int T, double phase_diff[N_OSC]){
+    for (int i=0; i<8; i++) {
+        osc[i].SetO(O[i]);
+        osc[i].SetA(A[i]);
+        osc[i].SetT(T);
+        osc[i].SetPh(phase_diff[i]);
+    }
+    double ref=millis();
+    for (double x=ref; x<T+ref; x=millis()){
+        for (int i=0; i<8; i++){
+            osc[i].refresh();
+        }
+    }
 }
 
 void walk(int steps, int T){
-    int A[8]= {15, 15, 22, 22, 20, 20, 15, 15};
-    int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
-    double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
-                            DEG2RAD(270), DEG2RAD(270), DEG2RAD(0), DEG2RAD(0)};
-
-    for(int i=0;i<steps;i++) oscillate(A,O, T, phase_diff);
-}
-
-void turnR(int steps, int T){
-    int A[8]= {15, 15, 10, 30, 20, 20, 15, 15};
+    int A[8]= {15, 15, 0, 22, 20, 20, 15, 15};
     int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
     double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
                             DEG2RAD(270), DEG2RAD(270), DEG2RAD(0), DEG2RAD(0)};
@@ -199,6 +177,15 @@ void turnR(int steps, int T){
 }
 
 void turnL(int steps, int T){
+    int A[8]= {15, 15, 10, 30, 20, 20, 15, 15};
+    int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
+    double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
+                            DEG2RAD(270), DEG2RAD(270), DEG2RAD(0), DEG2RAD(0)};
+
+    for(int i=0;i<steps;i++) oscillate(A,O, T, phase_diff);
+}
+
+void turnR(int steps, int T){
     int A[8]= {15, 15, 30, 10, 20, 20, 15, 15};
     int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
     double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
@@ -326,6 +313,5 @@ void mareo(){
             tone(11, random(500, 1200), 100);
             delay(60);
         }
-
     }
 }
