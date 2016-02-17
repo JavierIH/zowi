@@ -9,3 +9,8 @@
 | ------------- | ------------- | ------------- | ------------- |
 |<img src="Forge/images/forge.jpg" height="250" align="center"> | <img src="Zowiquilator/images/zowiquilator.jpg" height="250" align="center"> | <img src="Kobuki/images/kobuki.jpg" height="250" align="center"> |
 | By [David Sánchez](https://github.com/davidsanfal) | by [Alberto Arribas](http://www.albertoarribasart.com/)  | By [Sonia Verdú](http://www.soniaverdu.es/) |
+
+| Zowimanoid (template)| |  |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="Zowimaoid/images/zowimanoid.png" height="250" align="center"> | | |
+| By  [Javier Isabel](https://github.com/JavierIH) | | |
