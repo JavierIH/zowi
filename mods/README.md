@@ -12,5 +12,5 @@
 
 | Zowimanoid (template)| |  |
 | ------------- | ------------- | ------------- | ------------- |
-| <img src="Zowimaoid/images/zowimanoid.png" height="250" align="center"> | | |
+| <img src="Zowimanoid/images/zowimanoid.png" height="250" align="center"> | | |
 | By  [Javier Isabel](https://github.com/JavierIH) | | |
