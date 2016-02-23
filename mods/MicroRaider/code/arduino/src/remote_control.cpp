@@ -168,7 +168,7 @@ void oscillate(int A[N_OSC], int O[N_OSC], int T, double phase_diff[N_OSC]){
 }
 
 void walk(int steps, int T){
-    int A[8]= {15, 15, 0, 22, 20, 20, 15, 15};
+    int A[8]= {15, 15, 22, 22, 20, 20, 15, 15};
     int O[8] = {0, 0, 0, 0, -60, 60, -30, 30};
     double phase_diff[8] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90),
                             DEG2RAD(270), DEG2RAD(270), DEG2RAD(0), DEG2RAD(0)};
