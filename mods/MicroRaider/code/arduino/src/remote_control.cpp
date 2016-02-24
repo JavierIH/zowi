@@ -65,8 +65,7 @@ void setup(){
     osc[7].SetTrim(TRIM_AL);
     osc[8].SetTrim(TRIM_H);
 
-    //ninuninu();
-    walk(6, 3000);
+    ninuninu();
 
 }
 
