@@ -1,11 +1,3 @@
-<table>
-<tr>
-<td>
-<img src="images/bq-logo-human-right-technology.png" width="400" align="center">
-</td>
-</tr>
-</table>
-
 # ZOWI
 
 In this repository you will find the source files for the **bq Zowi** robot. If you are missing something, please do not hesitate to [file an issue on github](https://github.com/bq/zowiissues)
@@ -50,3 +42,9 @@ Este robot tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Inter
 Original concept by [k120189](http://www.thingiverse.com/k120189/about) on [Thingiverse](http://www.thingiverse.com/thing:43708)
 
 More information: [Zowi CC-BY-SA](http://diwo.bq.com/zowi-cc-by-sa/)
+
+# Other
+
+<img src="images/bq-logo-human-right-technology.png" width="240" align="center">
+
+Sponsored by BQ till march 2016
