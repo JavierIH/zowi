@@ -1,6 +1,6 @@
 # ZOWI
 
-In this repository you will find the source files for the **bq Zowi** robot. If you are missing something, please do not hesitate to [file an issue on github](https://github.com/bq/zowiissues)
+In this repository you will find the source files for the **bq Zowi** robot. If you are missing something, please do not hesitate to [file an issue on github](https://github.com/bq/zowi/issues)
 
 En este repositorio se encuentran los ficheros fuente del robot **Zowi de bq**. Si echas en falta algo, no dudes en [rellenar una tarea en github](https://github.com/bq/zowi/issues)
 
@@ -8,13 +8,25 @@ En este repositorio se encuentran los ficheros fuente del robot **Zowi de bq**. 
 <img src="images/zowi-image-1.png" width="300" align="center"> 
 
 
-More information in this post in DIWO: [Zowi, introducción a los robots bípedos](http://diwo.bq.com/zowi-introduccion-a-los-robots-bipedos/) (In spanish)
+More information: [javierih.com/robots/zowi](https://javierih.com/robots/zowi/)
 
 ## Designed in Freecad
 
 Zowi is not only an open source robot, but it has also been designed using the open source tool FreeCAD. This way, anyone can open the parts, study them, modify them and distribute the modifications
 
 <img src="images/zowi-image-2.png" width="300" align="center"> 
+
+# Repository layout
+
+Clone with `git clone --recursive` to get the ArduSnake submodule (or run `git submodule update --init`).
+
+| Folder | Contents |
+| --- | --- |
+| [hardware/](hardware) | FreeCAD source, STEP and STL of the printed parts |
+| [firmware/](firmware) | Zowi library, example sketches and the ArduSnake submodule (PlatformIO / Arduino IDE) |
+| [mods/](mods) | Zowi mods made by the community |
+| [sim/](sim) | URDF model, Isaac Sim / Isaac Lab, reinforcement learning and ROS 2 bridge |
+| [legacy/](legacy) | Original Zowi app firmware and Protocoder remote controls, kept for reference |
 
 # BOM: Bill of Materials
 
@@ -35,13 +47,12 @@ Zowi is not only an open source robot, but it has also been designed using the o
 
 <img src="images/by-sa.png" width="200" align = "center">
 
-This robot is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/). Please read the LICENSE files for more details.
+The hardware and documentation are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/) ([LICENSE](LICENSE)). The source code is released under the GPL ([LICENSE-GPL](LICENSE-GPL)).
 
-Este robot tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/). Por favor, lea los ficheros LICENSE para más detalles
+El hardware y la documentación tienen una licencia [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/) ([LICENSE](LICENSE)). El código fuente se publica bajo la GPL ([LICENSE-GPL](LICENSE-GPL)).
 
 Original concept by [k120189](http://www.thingiverse.com/k120189/about) on [Thingiverse](http://www.thingiverse.com/thing:43708)
 
-More information: [Zowi CC-BY-SA](http://diwo.bq.com/zowi-cc-by-sa/)
 
 # Other
 
