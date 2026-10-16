@@ -77,7 +77,7 @@ void navegar() {
   }
 
   if (dist < 1000 && dist != 0) {
-    zowi.turnLeft(2, 1000);
+    zowi.turn(2, 1000, LEFT);
     tone(6, 400, 50);
   }
   else {
