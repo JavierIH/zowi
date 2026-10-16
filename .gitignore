@@ -1,3 +1,18 @@
+# Editors / OS
 *~
-*.pyc
+desktop.ini
+.DS_Store
+.vscode/
 
+# CAD backups and lock files
+*.FCStd1
+*.fcstd1
+~$*
+*.blend1
+
+# PlatformIO
+.pio/
+
+# Python
+__pycache__/
+*.pyc
